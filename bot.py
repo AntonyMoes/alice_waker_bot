@@ -36,7 +36,7 @@ greet_bot = BotHandler("594760722:AAE_epRLd_DYiag967BWF6bu9zeBebspQxw")
 greetings = ('hello')
 now = datetime.datetime.now()
 s = socket.socket()
-s.bind(('', int(os.environ.get("$PORT", 5000))))
+s.bind(('', int(os.environ["$PORT"])))
 print("test1")
 s.listen(1);
 print("test2")
@@ -47,7 +47,9 @@ def main():
     hour = now.hour
 
     while True:
+	print("about to get updates")
         greet_bot.get_updates(new_offset)
+	print("updates recieved")
 
         last_update = greet_bot.get_last_update()
 
