@@ -30,7 +30,7 @@ class BotHandler:
         if len(get_result) > 0:
             last_update = get_result[-1]
         else:
-            last_update = get_result[len(get_result)]
+            last_update = []
 
         return last_update
 
@@ -50,6 +50,7 @@ def main():
     new_offset = None
     today = now.day
     hour = now.hour
+    minute = now.minute
 
     while True:
         print("about to get updates")
@@ -57,6 +58,8 @@ def main():
         print("updates recieved")
 
         last_update = greet_bot.get_last_update()
+        if last_update == [] :
+            continue
 
         last_update_id = last_update['update_id']
         last_chat_text = last_update['message']['text']
