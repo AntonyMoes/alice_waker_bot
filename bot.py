@@ -1,5 +1,6 @@
 import requests  
 import datetime
+import os
 
 class BotHandler:
 
@@ -33,6 +34,8 @@ class BotHandler:
 greet_bot = BotHandler("594760722:AAE_epRLd_DYiag967BWF6bu9zeBebspQxw")
 greetings = ('hello')
 now = datetime.datetime.now()
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect("0.0.0.0", os.environ["PORT"])
 
 def main():
     new_offset = None
