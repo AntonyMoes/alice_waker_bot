@@ -33,20 +33,22 @@ def main():
         last_chat_id = last_update['message']['chat']['id']
         last_chat_name = last_update['message']['chat']['first_name']
 
-        if last_chat_text.lower() in greetings  and 6 <= now.hour < 12:
-            greet_bot.send_message(last_chat_id,
-                                   "Доброе утро, %s\nТекущее время: %d:%d:%d" %
-                                   (last_chat_name, now.hour, now.minute, now.second))
+
+        if last_chat_text.lower() in greetings  and 4 <= now.hour < 12:
+            greeting = "Доброе утро"
 
         elif last_chat_text.lower() in greetings  and 12 <= now.hour < 17:
-            greet_bot.send_message(last_chat_id,
-                                   "Добрый день, %s\nТекущее время: %d:%d:%d" %
-                                   (last_chat_name, now.hour, now.minute, now.second))
+            greeting = "Добрый день"
 
         elif last_chat_text.lower() in greetings  and 17 <= now.hour < 23:
-            greet_bot.send_message(last_chat_id,
-                                   "Добрый вечер, %s\nТекущее время: %d:%d:%d" %
-                                   (last_chat_name, now.hour, now.minute, now.second))
+            greeting = "Добрый вечер"
+
+        else:
+            greeting = "Доброй ночи"
+
+        greet_bot.send_message(last_chat_id,
+                               "%s, %s\nТекущее время: %d:%d:%d" %
+                               (greeting, last_chat_name, (now.hour + 3) % 24, now.minute, now.second))
 
         new_offset = last_update_id + 1
 
