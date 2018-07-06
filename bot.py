@@ -33,7 +33,7 @@ class BotHandler:
 greet_bot = BotHandler("594760722:AAE_epRLd_DYiag967BWF6bu9zeBebspQxw")
 greetings = ('hello')
 now = datetime.datetime.now()
-
+PORT = int(os.environ.get('PORT', '5000'))
 
 def main():
     new_offset = None
