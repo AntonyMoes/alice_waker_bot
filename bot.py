@@ -37,9 +37,9 @@ greetings = ('hello')
 now = datetime.datetime.now()
 s = socket.socket()
 s.bind(('', int(os.environ.get("$PORT", 5000))))
-print "test1"
+print("test1")
 s.listen(1);
-print "test2"
+print("test2")
 
 def main():
     new_offset = None
