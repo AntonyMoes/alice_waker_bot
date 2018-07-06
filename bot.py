@@ -37,7 +37,7 @@ greetings = ('hello')
 now = datetime.datetime.now()
 s = socket.socket()
 print(os.environ)
-s.bind(('', int(os.environ.get("$PORT", 5000))))
+s.bind(('', int(os.environ.get("PORT", 4469))))
 print("test1")
 s.listen(1);
 print("test2")
