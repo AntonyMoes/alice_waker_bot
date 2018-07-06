@@ -3,6 +3,7 @@ import datetime
 import os
 import socket
 
+
 class BotHandler:
 
     def __init__(self, token):
@@ -24,6 +25,7 @@ class BotHandler:
 
     def get_last_update(self):
         get_result = self.get_updates()
+        print(get_result)
 
         if len(get_result) > 0:
             last_update = get_result[-1]
@@ -32,6 +34,7 @@ class BotHandler:
 
         return last_update
 
+
 greet_bot = BotHandler("594760722:AAE_epRLd_DYiag967BWF6bu9zeBebspQxw")
 greetings = ('hello')
 now = datetime.datetime.now()
@@ -39,8 +42,9 @@ s = socket.socket()
 print(os.environ)
 s.bind(('', int(os.environ.get("PORT", 4469))))
 print("test1")
-s.listen(1);
+s.listen(1)
 print("test2")
+
 
 def main():
     new_offset = None
@@ -72,6 +76,7 @@ def main():
             today += 1
 
         new_offset = last_update_id + 1
+
 
 if __name__ == '__main__':  
     try:
