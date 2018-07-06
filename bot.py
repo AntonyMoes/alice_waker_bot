@@ -36,7 +36,7 @@ greet_bot = BotHandler("594760722:AAE_epRLd_DYiag967BWF6bu9zeBebspQxw")
 greetings = ('hello')
 now = datetime.datetime.now()
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("0.0.0.0", int(os.environ.get("PORT", 5555))))
+s.connect(("0.0.0.0", int(os.environ.get("$PORT", 5000))))
 
 def main():
     new_offset = None
