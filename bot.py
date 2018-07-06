@@ -47,9 +47,9 @@ def main():
     hour = now.hour
 
     while True:
-	print("about to get updates")
+        print("about to get updates")
         greet_bot.get_updates(new_offset)
-	print("updates recieved")
+        print("updates recieved")
 
         last_update = greet_bot.get_last_update()
 
