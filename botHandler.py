@@ -87,25 +87,24 @@ class BotHandler:
     def add_subscriber(self, subscriber_id):
         self.subscribers[subscriber_id] = "null"
 
-    def greet(self, id, text, name):
+    def greet(self, id, name):
         now = datetime.datetime.now()
 
         hour = (now.hour + 3) % 24
 
-        if text.lower() in greetings:
-            if 4 <= hour < 12:
-                greeting = "Доброе утро"
+        if 4 <= hour < 12:
+             greeting = "Доброе утро"
 
-            elif 12 <= hour < 17:
-                greeting = "Добрый день"
+        elif 12 <= hour < 17:
+            greeting = "Добрый день"
 
-            elif 17 <= hour < 23:
-                greeting = "Добрый вечер"
+        elif 17 <= hour < 23:
+            greeting = "Добрый вечер"
 
-            else:
-                greeting = "Доброй ночи"
+        else:
+            greeting = "Доброй ночи"
 
-            self.send_message(id, "%s, %s\nТекущее время: %d:%d:%d" % (greeting, name, hour, now.minute, now.second))
+        self.send_message(id, "%s, %s\nТекущее время: %d:%d:%d" % (greeting, name, hour, now.minute, now.second))
 
     def set_alarm(self, id, raw_time):
         self.subscribers[id] = (int(raw_time.split(":")[0]), int(raw_time.split(":")[1]))
