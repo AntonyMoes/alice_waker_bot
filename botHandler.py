@@ -74,7 +74,7 @@ class BotHandler:
         elif request == "/menu":
             self.send_message(id, self.menu())
 
-        elif request == "/greet" or request in greetings:
+        elif request == "/greet" or request.lower() in greetings:
             self.greet(id, name)
 
         elif request == "/alarmdel":
