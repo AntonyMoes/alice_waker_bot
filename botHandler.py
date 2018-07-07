@@ -70,13 +70,11 @@ class BotHandler:
     def handle_request(self, request, id, name):
         if request == "/start":
             self.add_subscriber(id)
+
         elif request == "/menu":
             self.send_message(id, self.menu())
-<<<<<<< HEAD
+
         elif request == "/greet" or request in greetings:
-=======
-        elif request == "/greet":
->>>>>>> 2d1d3713fcb18672e4554ff5b3b208527405c0f6
             self.greet(id, name)
 
         elif request == "/alarmdel":
@@ -92,11 +90,7 @@ class BotHandler:
             self.send_message(id, "Запрос непонятен 6_9. /menu - вызов справки")
 
     def add_subscriber(self, subscriber_id):
-<<<<<<< HEAD
         self.subscribers[subscriber_id] = None
-=======
-        self.subscribers[subscriber_id] = "null"
->>>>>>> 2d1d3713fcb18672e4554ff5b3b208527405c0f6
 
     def greet(self, id, name):
         now = datetime.datetime.now()
@@ -122,11 +116,7 @@ class BotHandler:
 
     def del_alarm(self, id):
         if id in self.subscribers.keys():
-<<<<<<< HEAD
             self.subscribers[id] = None
-=======
-            self.subscribers[id] = "null"
->>>>>>> 2d1d3713fcb18672e4554ff5b3b208527405c0f6
 
     def show_tip(self, id):
         self.send_message(id, tips[0])
