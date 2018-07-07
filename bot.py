@@ -8,7 +8,6 @@ import socket
 
 greet_bot = botHandler.BotHandler("594760722:AAE_epRLd_DYiag967BWF6bu9zeBebspQxw")
 greetings = ('hello', 'hi', 'heya', 'howdy', 'привет', 'хей', 'здравствуйте', 'приветствую', 'хай')
-now = datetime.datetime.now()
 s = socket.socket()
 print(os.environ)
 s.bind(('', int(os.environ.get("PORT", 4469))))
@@ -22,6 +21,7 @@ def main():
 
 
     while True:
+        now = datetime.datetime.now()
         print("about to get updates")
         greet_bot.get_updates(new_offset)
         print("updates recieved")
