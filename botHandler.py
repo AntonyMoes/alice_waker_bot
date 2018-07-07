@@ -3,7 +3,9 @@
 import requests
 import datetime
 
-greetings = ('hello', 'hi', 'heya', 'howdy', 'привет', 'хей', 'здравствуйте', 'приветствую', 'хай')
+greetings = ('hello', 'hi', 'heya', 'howdy', 'привет', 'хей',
+             'здравствуйте', 'приветствую', 'хай', 'приветик', 'hey', 'здравствуй')
+
 tips = ('Не ложитесь так поздно, как разработчик этого бота :^)',)
 
 
@@ -71,7 +73,7 @@ class BotHandler:
             self.add_subscriber(id)
         elif request == "/menu":
             self.send_message(id, self.menu())
-        elif request == "/greet":
+        elif request == "/greet" or request in greetings:
             self.greet(id, name)
 
         elif request == "/alarmdel":
@@ -87,7 +89,7 @@ class BotHandler:
             self.send_message(id, "Запрос непонятен 6_9. /menu - вызов справки")
 
     def add_subscriber(self, subscriber_id):
-        self.subscribers[subscriber_id] = "null"
+        self.subscribers[subscriber_id] = None
 
     def greet(self, id, name):
         now = datetime.datetime.now()
@@ -113,7 +115,7 @@ class BotHandler:
 
     def del_alarm(self, id):
         if id in self.subscribers.keys():
-            self.subscribers[id] = "null"
+            self.subscribers[id] = None
 
     def show_tip(self, id):
         self.send_message(id, tips[0])
