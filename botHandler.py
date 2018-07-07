@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
+
 import requests
 
 
 class BotHandler:
+
+    subscribers = {}
 
     def __init__(self, token):
         self.token = token
@@ -31,3 +35,12 @@ class BotHandler:
 
         return last_update
 
+    def handle_request(self, request):
+        return True;
+
+    def menu(self):
+        return "/menu - вывод меню\n\
+        /greet - приветствие от бота\n\
+        /alarmset - поставить будильник\n\
+        /alarmdel - удалить будильник\n\
+        /tip - случайная заметка"

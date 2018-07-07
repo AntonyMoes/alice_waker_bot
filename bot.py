@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 import botHandler
 import datetime
 import os
@@ -19,6 +20,7 @@ print("sock opened successfully")
 def main():
     new_offset = None
 
+
     while True:
         print("about to get updates")
         greet_bot.get_updates(new_offset)
@@ -33,22 +35,24 @@ def main():
         last_chat_id = last_update['message']['chat']['id']
         last_chat_name = last_update['message']['chat']['first_name']
 
+        hour = (now.hour + 3) % 24
 
-        if last_chat_text.lower() in greetings  and 4 <= now.hour < 12:
-            greeting = "Доброе утро"
+        if last_chat_text.lower() in greetings:
+            if 4 <= hour < 12:
+                greeting = "Доброе утро"
 
-        elif last_chat_text.lower() in greetings  and 12 <= now.hour < 17:
-            greeting = "Добрый день"
+            elif 12 <= hour < 17:
+                greeting = "Добрый день"
 
-        elif last_chat_text.lower() in greetings  and 17 <= now.hour < 23:
-            greeting = "Добрый вечер"
+            elif 17 <= hour < 23:
+                greeting = "Добрый вечер"
 
-        else:
-            greeting = "Доброй ночи"
+            else:
+                greeting = "Доброй ночи"
 
-        greet_bot.send_message(last_chat_id,
+            greet_bot.send_message(last_chat_id,
                                "%s, %s\nТекущее время: %d:%d:%d" %
-                               (greeting, last_chat_name, (now.hour + 3) % 24, now.minute, now.second))
+                               (greeting, last_chat_name, hour, now.minute, now.second))
 
         new_offset = last_update_id + 1
 
