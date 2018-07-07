@@ -43,9 +43,11 @@ class BotHandler:
 
         while True:
             now = datetime.datetime.now();
+            now.hour = (now.hour + 3) % 24
             for k in self.subscribers.keys():
                 if self.subscribers[k] == (now.hour, now.minute):
                     self.send_message(k, "Просыпайся! Вперед к великим делам :3")
+                    self.del_alarm(k)
 
             print("about to get updates")
             self.get_updates(new_offset)
