@@ -42,10 +42,10 @@ class BotHandler:
         new_offset = None
 
         while True:
-            now = datetime.datetime.now();
-            now.hour = (now.hour + 3) % 24
+            now = datetime.datetime.now()
+            actual_hour = (now.hour + 3) % 24
             for k in self.subscribers.keys():
-                if self.subscribers[k] == (now.hour, now.minute):
+                if self.subscribers[k] == (actual_hour, now.minute):
                     self.send_message(k, "Просыпайся! Вперед к великим делам :3")
                     self.del_alarm(k)
 
