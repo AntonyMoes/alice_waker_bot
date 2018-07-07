@@ -111,7 +111,8 @@ class BotHandler:
         self.subscribers[id] = (int(raw_time.split(":")[0]), int(raw_time.split(":")[1]))
 
     def del_alarm(self, id):
-        self.subscribers[id] = "null"
+        if id in self.subscribers.keys():
+            self.subscribers[id] = "null"
 
     def show_tip(self, id):
         self.send_message(id, tips[0])
